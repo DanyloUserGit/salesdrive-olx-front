@@ -4,6 +4,7 @@ import Loader from "@/components/Loader";
 import Pagination from "@/components/Pagination";
 import Search from "@/components/Search";
 import Wrapper from "@/components/Wrapper";
+import { baseUrl } from "@/http";
 import { usePagination } from "@/store/usePagination";
 import { useProducts } from "@/store/useProducts";
 import { Product } from "@/types";
@@ -25,9 +26,7 @@ export default function Home() {
     const fetchProducts = async () => {
       try {
         setLoader(true);
-        const res = await axios.get(
-          `http://localhost:8000/salesdrive/page/${page}`
-        );
+        const res = await axios.get(`${baseUrl}/salesdrive/page/${page}`);
         setProducts(res.data.products); // або res.data, залежить від API
         setTotalPages(res.data.totalPages || 1);
       } catch (error) {
@@ -44,7 +43,7 @@ export default function Home() {
       try {
         setLoader(true);
         const res = await axios.get(
-          `http://localhost:8000/salesdrive/search?query=${search}`
+          `${baseUrl}/salesdrive/search?query=${search}`
         );
         setProducts(res.data.products);
       } catch (error) {
