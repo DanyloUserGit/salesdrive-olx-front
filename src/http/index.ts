@@ -1,1 +1,1 @@
-export const baseUrl = "https://large-comics-wink.loca.lt";
+export const baseUrl = "https://77fcb9b4e849.ngrok-free.app";
